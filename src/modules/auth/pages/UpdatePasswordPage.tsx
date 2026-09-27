@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useTransition } from "react";
 import { useTranslations } from "next-intl";
 import { updatePasswordForm } from "@/modules/auth/actions/user-action";
-import { Input } from "@/ui/input";
 import { Button } from "@/ui/button";
 import { showToast } from "@/modules/shared/ui/toast";
 import { UpdatePasswordSchema } from "@/modules/shared/utils/schemas";
@@ -12,6 +12,10 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import { Field, FieldError, FieldGroup, FieldLabel } from "@/ui/field";
+import { AuthCard } from "@/modules/auth/ui/AuthCard";
+import { AuthPageHeader } from "@/modules/auth/ui/AuthPageHeader";
+import { PasswordField } from "@/modules/auth/ui/PasswordField";
+import { ToastManager } from "@/modules/shared/ui/Toast/toast-manager";
 
 type Schema = z.infer<typeof UpdatePasswordSchema>;
 
@@ -39,26 +43,31 @@ export function UpdatePasswordPage() {
 
   return (
     <>
-      <h2 className="mt-2 text-3xl font-extrabold">{t("updateTitle")}</h2>
-      <div className="mt-4 w-full max-w-md">
+      <AuthCard>
+        <AuthPageHeader
+          title={t("updateTitle")}
+          subtitle={t("updateSubtitle")}
+        />
+
         <form
-          className="flex flex-col gap-2"
+          className="flex flex-col gap-4"
           onSubmit={form.handleSubmit(onSubmit)}
         >
-          <FieldGroup>
+          <FieldGroup className="gap-4">
             <Controller
               name="password"
               control={form.control}
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
                   <FieldLabel htmlFor="password">{t("password")}</FieldLabel>
-                  <Input
+                  <PasswordField
                     {...field}
                     id="password"
                     aria-invalid={fieldState.invalid}
-                    type="password"
-                    autoComplete="current-password"
-                    className="bg-card shadow-xs"
+                    autoComplete="new-password"
+                    placeholder="••••••••••••"
+                    toggleShowLabel={t("showPassword")}
+                    toggleHideLabel={t("hidePassword")}
                   />
                   {fieldState.invalid && (
                     <FieldError
@@ -77,13 +86,14 @@ export function UpdatePasswordPage() {
                   <FieldLabel htmlFor="confirmPassword">
                     {t("confirmPassword")}
                   </FieldLabel>
-                  <Input
+                  <PasswordField
                     {...field}
                     id="confirmPassword"
                     aria-invalid={fieldState.invalid}
-                    type="password"
-                    autoComplete="current-password"
-                    className="bg-card shadow-xs"
+                    autoComplete="new-password"
+                    placeholder="••••••••••••"
+                    toggleShowLabel={t("showPassword")}
+                    toggleHideLabel={t("hidePassword")}
                   />
                   {fieldState.invalid && (
                     <FieldError
@@ -95,18 +105,27 @@ export function UpdatePasswordPage() {
             />
           </FieldGroup>
 
-          <Button className="mt-2" loading={pending} type="submit">
-            {t("reset")}
+          <Button
+            className="mt-2 h-11 w-full rounded-xl text-[13px] font-semibold"
+            loading={pending}
+            type="submit"
+          >
+            {t("updateTitle")}
+            <ArrowRight className="size-4" aria-hidden="true" />
           </Button>
-
-          <p className="mt-2 text-center text-sm">
-            {t("signInMessage")}
-            <Link href="/login" className="font-medium text-primary">
-              {t("signIn")}
-            </Link>
-          </p>
         </form>
-      </div>
+
+        <div className="mt-6 flex flex-col items-center pt-2 text-center">
+          <Link
+            href="/login"
+            className="text-primary inline-flex items-center gap-1.5 text-[13px] font-medium transition-colors hover:underline"
+          >
+            <ArrowLeft className="size-4" aria-hidden="true" />
+            {t("backToSignIn")}
+          </Link>
+        </div>
+      </AuthCard>
+      <ToastManager />
     </>
   );
 }

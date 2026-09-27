@@ -1,10 +1,9 @@
 "use client";
 
-import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { useTransition } from "react";
 import { createUserForm } from "@/modules/auth/actions/user-action";
 import { useTranslations } from "next-intl";
-import { Input } from "@/ui/input";
 import { Button } from "@/ui/button";
 import { showToast } from "@/modules/shared/ui/toast";
 import { UserSchema } from "@/modules/shared/utils/schemas";
@@ -12,6 +11,14 @@ import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 import { Field, FieldError, FieldGroup, FieldLabel } from "@/ui/field";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { AuthCard } from "@/modules/auth/ui/AuthCard";
+import { AuthPageHeader } from "@/modules/auth/ui/AuthPageHeader";
+import { GoogleAuthButton } from "@/modules/auth/ui/GoogleAuthButton";
+import { AuthDivider } from "@/modules/auth/ui/AuthDivider";
+import { AuthInput } from "@/modules/auth/ui/AuthInput";
+import { PasswordField } from "@/modules/auth/ui/PasswordField";
+import { AuthSwitchLink } from "@/modules/auth/ui/AuthSwitchLink";
+import { ToastManager } from "@/modules/shared/ui/Toast/toast-manager";
 
 type Schema = z.infer<typeof UserSchema>;
 
@@ -40,26 +47,33 @@ export function RegisterPage() {
 
   return (
     <>
-      <h2 className="mt-2 text-3xl font-extrabold">{t("signUp")}</h2>
-      <div className="mt-4 w-full max-w-md">
+      <AuthCard>
+        <AuthPageHeader
+          title={t("registerTitle")}
+          subtitle={t("registerSubtitle")}
+        />
+
+        <GoogleAuthButton />
+        <AuthDivider label={t("orRegisterWithEmail")} />
+
         <form
-          className="flex flex-col gap-1"
+          className="flex flex-col gap-4"
           onSubmit={form.handleSubmit(onSubmit)}
         >
-          <FieldGroup>
+          <FieldGroup className="gap-4">
             <Controller
               name="email"
               control={form.control}
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
                   <FieldLabel htmlFor="email">{t("email")}</FieldLabel>
-                  <Input
+                  <AuthInput
                     {...field}
                     id="email"
                     aria-invalid={fieldState.invalid}
                     type="email"
                     autoComplete="email"
-                    className="bg-card shadow-xs"
+                    placeholder="name@example.com"
                   />
                   {fieldState.invalid && (
                     <FieldError
@@ -76,13 +90,14 @@ export function RegisterPage() {
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
                   <FieldLabel htmlFor="password">{t("password")}</FieldLabel>
-                  <Input
+                  <PasswordField
                     {...field}
                     id="password"
                     aria-invalid={fieldState.invalid}
-                    type="password"
-                    autoComplete="current-password"
-                    className="bg-card shadow-xs"
+                    autoComplete="new-password"
+                    placeholder="••••••••••••"
+                    toggleShowLabel={t("showPassword")}
+                    toggleHideLabel={t("hidePassword")}
                   />
                   {fieldState.invalid && (
                     <FieldError
@@ -101,13 +116,14 @@ export function RegisterPage() {
                   <FieldLabel htmlFor="confirmPassword">
                     {t("confirmPassword")}
                   </FieldLabel>
-                  <Input
+                  <PasswordField
                     {...field}
                     id="confirmPassword"
                     aria-invalid={fieldState.invalid}
-                    type="password"
-                    autoComplete="current-password"
-                    className="bg-card shadow-xs"
+                    autoComplete="new-password"
+                    placeholder="••••••••••••"
+                    toggleShowLabel={t("showPassword")}
+                    toggleHideLabel={t("hidePassword")}
                   />
                   {fieldState.invalid && (
                     <FieldError
@@ -119,18 +135,23 @@ export function RegisterPage() {
             />
           </FieldGroup>
 
-          <Button className="mt-4" loading={pending} type="submit">
-            {t("signUp")}
+          <Button
+            className="mt-2 h-11 w-full rounded-xl text-[13px] font-semibold"
+            loading={pending}
+            type="submit"
+          >
+            {t("createAccount")}
+            <ArrowRight className="size-4" aria-hidden="true" />
           </Button>
-
-          <p className="mt-2 text-center text-sm">
-            {t("signInMessage")}
-            <Link href="/login" className="font-medium text-primary">
-              {t("signIn")}
-            </Link>
-          </p>
         </form>
-      </div>
+
+        <AuthSwitchLink
+          message={t("signInMessage")}
+          href="/login"
+          linkLabel={t("signIn")}
+        />
+      </AuthCard>
+      <ToastManager />
     </>
   );
 }
