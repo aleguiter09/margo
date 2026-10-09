@@ -140,7 +140,7 @@ export const updatePasswordForm = async (
   redirect("/home");
 };
 
-export const signInWithGoogle = async () => {
+export const signInWithGoogle = async (): Promise<void> => {
   const supabase = await createClient();
   const auth_callback_url = `${process.env.SITE_URL}/auth/callback`;
 
@@ -151,9 +151,9 @@ export const signInWithGoogle = async () => {
     },
   });
 
-  if (error) {
-    return { success: false, error: error.message };
+  if (error || !data.url) {
+    redirect("/login");
   }
 
-  redirect(data.url ?? "/");
+  redirect(data.url);
 };

@@ -33,7 +33,7 @@ export function GoogleAuthButton() {
     <form action={signInWithGoogle}>
       <button
         type="submit"
-        className="bg-muted text-foreground hover:bg-muted/80 focus-visible:ring-ring flex h-11 w-full items-center justify-center gap-3 rounded-xl px-4 text-[13px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 active:scale-[0.99]"
+        className="bg-muted cursor-pointer text-foreground hover:bg-muted/80 focus-visible:ring-ring flex h-11 w-full items-center justify-center gap-3 rounded-xl px-4 text-[13px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 active:scale-[0.99]"
       >
         <GoogleIcon />
         <span>{t("continueWithGoogle")}</span>
