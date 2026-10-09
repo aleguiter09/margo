@@ -76,7 +76,10 @@
   "footer": {
     "tagline": "Finanzas personales con más margen.",
     "product": "Producto",
-    "account": "Cuenta"
+    "account": "Cuenta",
+    "legal": "Legal",
+    "privacy": "Privacidad",
+    "terms": "Condiciones"
   },
   "mocks": {
     "balance": "Balance",

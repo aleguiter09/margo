@@ -65,6 +65,24 @@ export async function LandingFooter({ navItems }: Props) {
               </li>
             </ul>
           </div>
+
+          <div>
+            <p className="text-sm font-medium text-foreground">
+              {t("footer.legal")}
+            </p>
+            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+              <li>
+                <Link href="/privacy" className="hover:text-foreground">
+                  {t("footer.privacy")}
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms" className="hover:text-foreground">
+                  {t("footer.terms")}
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </footer>

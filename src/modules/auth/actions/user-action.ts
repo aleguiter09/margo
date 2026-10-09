@@ -139,3 +139,21 @@ export const updatePasswordForm = async (
   revalidatePath("/home", "layout");
   redirect("/home");
 };
+
+export const signInWithGoogle = async (): Promise<void> => {
+  const supabase = await createClient();
+  const auth_callback_url = `${process.env.SITE_URL}/auth/callback`;
+
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      redirectTo: auth_callback_url,
+    },
+  });
+
+  if (error || !data.url) {
+    redirect("/login");
+  }
+
+  redirect(data.url);
+};

@@ -1,0 +1,177 @@
+{
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: October 9, 2026",
+    "backHome": "Back to Margo",
+    "otherDocLabel": "Terms of Service",
+    "otherDocHref": "/terms",
+    "sections": [
+      {
+        "heading": "1. Who we are",
+        "paragraphs": [
+          "Margo (\"we\", \"us\", or \"the Service\") is a personal finance web application. This Privacy Policy explains what personal data we process, why, with whom we share it, and what rights you have.",
+          "For any privacy questions or to exercise your rights, contact us at aleguiter9@gmail.com."
+        ]
+      },
+      {
+        "heading": "2. Data we process",
+        "paragraphs": [
+          "Account data: email address and authentication credentials (or basic profile data if you sign in with Google).",
+          "Financial data you enter: accounts, balances, movements (income, expenses, and transfers), categories, budgets, and related preferences.",
+          "Technical and preference data: language/locale, cookies or storage needed for session management and temporary UI messages.",
+          "We do not ask for bank login credentials (such as online banking passwords) and we do not automatically connect to financial institutions: you enter information manually."
+        ]
+      },
+      {
+        "heading": "3. How we use your data",
+        "paragraphs": [
+          "To provide the Service: authenticate you, store and display your personal finances, and keep your settings.",
+          "To operate and improve the platform: security, stability, troubleshooting, and performance (for example, aggregated hosting metrics).",
+          "To communicate with you when needed for account operations (for example, password reset).",
+          "The primary basis for processing is providing the service you request when you create an account and use Margo."
+        ]
+      },
+      {
+        "heading": "4. Providers and processors",
+        "paragraphs": [
+          "Supabase: authentication and database where your account and the financial data you record are stored.",
+          "Google: if you choose \"Continue with Google\", Google processes authentication under its own policies.",
+          "Vercel: application hosting and, when enabled, Speed Insights or other hosting performance metrics.",
+          "These providers process data only as needed to deliver their services. We recommend reviewing their privacy policies as well."
+        ]
+      },
+      {
+        "heading": "5. Cookies and similar technologies",
+        "paragraphs": [
+          "We use cookies and technical storage required for the Service to work: authentication session, language preference, and temporary UI messages (for example, toasts).",
+          "We currently do not use advertising cookies or third-party marketing tools. If we later add non-essential analytics, we will update this policy and, where required, ask for your consent."
+        ]
+      },
+      {
+        "heading": "6. Retention",
+        "paragraphs": [
+          "We keep your data while you maintain an active Margo account and as needed to provide the Service.",
+          "If you request deletion of your account or specific data, we will process the request within a reasonable time, unless we must retain certain information for legal obligations or to resolve disputes."
+        ]
+      },
+      {
+        "heading": "7. Your rights",
+        "paragraphs": [
+          "Depending on applicable law (for example, the GDPR if you live in the European Economic Area), you may request access, rectification, erasure, restriction of processing, objection, and, where applicable, data portability.",
+          "To exercise these rights, email aleguiter9@gmail.com clearly stating your request and the email associated with your account. We may ask for additional information to verify your identity."
+        ]
+      },
+      {
+        "heading": "8. Security",
+        "paragraphs": [
+          "We apply reasonable technical and organizational measures to protect your data (authenticated access, HTTPS encryption in transit, and infrastructure provider controls).",
+          "No system is 100% secure. If you detect an incident affecting your account, contact us immediately at aleguiter9@gmail.com."
+        ]
+      },
+      {
+        "heading": "9. Children",
+        "paragraphs": [
+          "Margo is not directed at children under 16 (or the minimum age required in your jurisdiction). If you believe a child has provided us with personal data, contact us so we can delete it."
+        ]
+      },
+      {
+        "heading": "10. Changes to this policy",
+        "paragraphs": [
+          "We may update this Privacy Policy to reflect changes to the Service or the law. We will post the updated version on this page with a revised last-updated date.",
+          "If changes are material, we will try to notify you in a reasonable way (for example, an in-app notice or email)."
+        ]
+      },
+      {
+        "heading": "11. Important notice",
+        "paragraphs": [
+          "Margo is a personal finance organization and tracking tool. It is not a financial institution, does not provide financial, tax, or investment advice, and is not a banking service."
+        ]
+      }
+    ]
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated: October 9, 2026",
+    "backHome": "Back to Margo",
+    "otherDocLabel": "Privacy Policy",
+    "otherDocHref": "/privacy",
+    "sections": [
+      {
+        "heading": "1. Acceptance",
+        "paragraphs": [
+          "By creating an account or using Margo (\"the Service\"), you agree to these Terms of Service and our Privacy Policy. If you do not agree, do not use the Service.",
+          "Margo is a personal project under active development. The Service may change, be interrupted, or be discontinued without long advance notice."
+        ]
+      },
+      {
+        "heading": "2. Description of the Service",
+        "paragraphs": [
+          "Margo lets you record and view personal finance information you enter: accounts, movements, categories, budgets, and basic analytics.",
+          "The Service does not automatically connect to banks and does not execute payments, transfers, or investments on your behalf."
+        ]
+      },
+      {
+        "heading": "3. Account and eligibility",
+        "paragraphs": [
+          "You must provide accurate information and keep your credentials confidential. You are responsible for activity that occurs under your account.",
+          "You must have legal capacity to accept these terms and meet the minimum age required in your jurisdiction to use online services of this kind."
+        ]
+      },
+      {
+        "heading": "4. Acceptable use",
+        "paragraphs": [
+          "You agree to use Margo lawfully and not to: attempt unauthorized access to systems or other people's data; interfere with the Service; abuse APIs or resources; or use the Service for illegal or fraudulent activity.",
+          "We may suspend or terminate accounts that violate these rules or put the Service or other users at risk."
+        ]
+      },
+      {
+        "heading": "5. Not financial advice or financial services",
+        "paragraphs": [
+          "The information, charts, and summaries Margo shows are personal organization tools. They do not constitute financial, accounting, tax, or investment advice.",
+          "Margo is not a bank, payment institution, or financial intermediary. Decisions you make based on recorded information are solely your responsibility."
+        ]
+      },
+      {
+        "heading": "6. Your content",
+        "paragraphs": [
+          "You retain ownership of the financial data and other content you upload. You grant us a limited license to host, process, and display that content solely to provide the Service.",
+          "You are responsible for the accuracy of the information you record and for having the rights needed to provide it."
+        ]
+      },
+      {
+        "heading": "7. Availability and \"as is\"",
+        "paragraphs": [
+          "The Service is provided \"as is\" and \"as available\", without warranties of uninterrupted availability, freedom from errors, or fitness for a particular purpose.",
+          "We may perform maintenance, fixes, or feature changes at any time."
+        ]
+      },
+      {
+        "heading": "8. Limitation of liability",
+        "paragraphs": [
+          "To the maximum extent permitted by applicable law, we will not be liable for indirect or incidental damages, lost profits, data loss, or financial decisions made based on your use of Margo.",
+          "Our total aggregate liability arising from use of the Service will not exceed, to the extent permitted, the greater of (a) the amount you paid us for the Service in the prior 12 months (if any) or (b) zero, if the Service is free."
+        ]
+      },
+      {
+        "heading": "9. Termination",
+        "paragraphs": [
+          "You may stop using the Service at any time. You may request account deletion by contacting aleguiter9@gmail.com.",
+          "We may suspend or terminate access if you breach these terms, if required for security, or if we discontinue the Service."
+        ]
+      },
+      {
+        "heading": "10. Changes to the terms",
+        "paragraphs": [
+          "We may modify these Terms by posting an updated version on this page. Continued use of the Service after publication constitutes acceptance of the changes, unless applicable law requires another consent mechanism."
+        ]
+      },
+      {
+        "heading": "11. Governing law and contact",
+        "paragraphs": [
+          "These Terms will be interpreted in accordance with the laws applicable in your place of residence or, where relevant, consumer-protection rules. This section is a draft and may be updated when the project has a defined entity or jurisdiction.",
+          "For questions about these Terms: aleguiter9@gmail.com."
+        ]
+      }
+    ]
+  }
+}
