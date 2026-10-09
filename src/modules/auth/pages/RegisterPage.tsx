@@ -1,10 +1,12 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { useTransition } from "react";
 import { createUserForm } from "@/modules/auth/actions/user-action";
 import { useTranslations } from "next-intl";
 import { Button } from "@/ui/button";
+import { Checkbox } from "@/ui/checkbox";
 import { showToast } from "@/modules/shared/ui/toast";
 import { UserSchema } from "@/modules/shared/utils/schemas";
 import { Controller, useForm } from "react-hook-form";
@@ -20,24 +22,34 @@ import { PasswordField } from "@/modules/auth/ui/PasswordField";
 import { AuthSwitchLink } from "@/modules/auth/ui/AuthSwitchLink";
 import { ToastManager } from "@/modules/shared/ui/Toast/toast-manager";
 
-type Schema = z.infer<typeof UserSchema>;
+const RegisterFormSchema = UserSchema.and(
+  z.object({
+    acceptTerms: z.literal(true, {
+      error: "acceptTermsError",
+    }),
+  }),
+);
+
+type Schema = z.infer<typeof RegisterFormSchema>;
 
 export function RegisterPage() {
   const t = useTranslations("auth");
   const [pending, startTransition] = useTransition();
 
   const form = useForm<Schema>({
-    resolver: zodResolver(UserSchema),
+    resolver: zodResolver(RegisterFormSchema),
     defaultValues: {
       email: "",
       password: "",
       confirmPassword: "",
+      acceptTerms: undefined,
     },
   });
 
   function onSubmit(data: Schema) {
     startTransition(async () => {
-      const res = await createUserForm(data);
+      const { acceptTerms: _acceptTerms, ...credentials } = data;
+      const res = await createUserForm(credentials);
 
       if (!res.success) {
         showToast({ type: "error", message: t(res.error ?? "defaultError") });
@@ -54,6 +66,24 @@ export function RegisterPage() {
         />
 
         <GoogleAuthButton />
+        <p className="text-muted-foreground mt-2 text-center text-[11px] leading-relaxed">
+          {t("googleLegalNotice")}{" "}
+          <Link
+            href="/terms"
+            className="text-foreground underline-offset-2 hover:underline"
+          >
+            {t("termsOfService")}
+          </Link>
+          {t("acceptTermsAnd")}
+          <Link
+            href="/privacy"
+            className="text-foreground underline-offset-2 hover:underline"
+          >
+            {t("privacyPolicy")}
+          </Link>
+          .
+        </p>
+
         <AuthDivider label={t("orRegisterWithEmail")} />
 
         <form
@@ -130,6 +160,55 @@ export function RegisterPage() {
                       error={t(fieldState.error?.message as string)}
                     />
                   )}
+                </Field>
+              )}
+            />
+
+            <Controller
+              name="acceptTerms"
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field
+                  orientation="horizontal"
+                  data-invalid={fieldState.invalid}
+                  className="mt-1 items-start gap-3"
+                >
+                  <Checkbox
+                    id="acceptTerms"
+                    checked={field.value === true}
+                    onCheckedChange={(checked) =>
+                      field.onChange(checked === true ? true : undefined)
+                    }
+                    aria-invalid={fieldState.invalid}
+                    className="mt-0.5"
+                  />
+                  <div className="flex min-w-0 flex-1 flex-col gap-1.5">
+                    <FieldLabel
+                      htmlFor="acceptTerms"
+                      className="text-muted-foreground block w-full text-[12px] font-normal leading-5"
+                    >
+                      {t("acceptTermsPrefix")}
+                      <Link
+                        href="/terms"
+                        className="text-foreground underline-offset-2 hover:underline"
+                      >
+                        {t("termsOfService")}
+                      </Link>
+                      {t("acceptTermsAnd")}
+                      <Link
+                        href="/privacy"
+                        className="text-foreground underline-offset-2 hover:underline"
+                      >
+                        {t("privacyPolicy")}
+                      </Link>
+                      .
+                    </FieldLabel>
+                    {fieldState.invalid && (
+                      <FieldError
+                        error={t(fieldState.error?.message as string)}
+                      />
+                    )}
+                  </div>
                 </Field>
               )}
             />

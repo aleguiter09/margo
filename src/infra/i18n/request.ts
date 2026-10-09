@@ -31,6 +31,8 @@ export default getRequestConfig(async () => {
         ).default,
         landing: (await import(`../../messages/${data.language}/landing.json`))
           .default,
+        legal: (await import(`../../messages/${data.language}/legal.json`))
+          .default,
         movements: (
           await import(`../../messages/${data.language}/movements.json`)
         ).default,
@@ -64,6 +66,7 @@ export default getRequestConfig(async () => {
       dashboard: (await import(`../../messages/${locale}/dashboard.json`))
         .default,
       landing: (await import(`../../messages/${locale}/landing.json`)).default,
+      legal: (await import(`../../messages/${locale}/legal.json`)).default,
       movements: (await import(`../../messages/${locale}/movements.json`))
         .default,
       settings: (await import(`../../messages/${locale}/settings.json`))

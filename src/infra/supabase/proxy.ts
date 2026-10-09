@@ -34,7 +34,8 @@ export async function updateSession(request: NextRequest) {
 
   const pathname = request.nextUrl.pathname;
   const authPublicPaths = ["/login", "/register", "/reset"];
-  const publicPaths = ["/", ...authPublicPaths, "/auth/confirm"];
+  const legalPublicPaths = ["/privacy", "/terms"];
+  const publicPaths = ["/", ...authPublicPaths, ...legalPublicPaths, "/auth/confirm"];
 
   // Cron routes authenticate via CRON_SECRET in the route handler, not session.
   if (pathname.startsWith("/api/cron/")) {

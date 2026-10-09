@@ -1,0 +1,177 @@
+{
+  "privacy": {
+    "title": "Política de Privacidad",
+    "lastUpdated": "Última actualización: 9 de octubre de 2026",
+    "backHome": "Volver a Margo",
+    "otherDocLabel": "Condiciones de Servicio",
+    "otherDocHref": "/terms",
+    "sections": [
+      {
+        "heading": "1. Quiénes somos",
+        "paragraphs": [
+          "Margo (\"nosotros\", \"nuestro\" o \"el Servicio\") es una aplicación web de finanzas personales. Esta Política de Privacidad explica qué datos personales tratamos, para qué, con quién los compartimos y qué derechos tenés.",
+          "Para cualquier consulta relacionada con privacidad o el ejercicio de tus derechos, podés escribir a aleguiter9@gmail.com."
+        ]
+      },
+      {
+        "heading": "2. Datos que tratamos",
+        "paragraphs": [
+          "Datos de cuenta: dirección de correo electrónico y credenciales de autenticación (o datos de perfil básicos si iniciás sesión con Google).",
+          "Datos financieros que vos cargás: cuentas, saldos, movimientos (ingresos, gastos y transferencias), categorías, presupuestos y preferencias relacionadas.",
+          "Datos técnicos y de preferencia: idioma/locale, cookies o almacenamiento necesarios para la sesión y mensajes temporales de la interfaz.",
+          "No pedimos datos bancarios de acceso (como claves de home banking) ni conectamos de forma automática con entidades financieras: vos registrás la información de forma manual."
+        ]
+      },
+      {
+        "heading": "3. Para qué usamos tus datos",
+        "paragraphs": [
+          "Prestarte el Servicio: autenticarte, guardar y mostrar tus finanzas personales, y mantener tu configuración.",
+          "Operar y mejorar la plataforma: seguridad, estabilidad, diagnóstico de errores y rendimiento (por ejemplo, métricas agregadas de hosting).",
+          "Comunicarnos con vos cuando sea necesario para el funcionamiento de la cuenta (por ejemplo, restablecimiento de contraseña).",
+          "La base principal del tratamiento es la prestación del servicio que solicitás al crear una cuenta y usar Margo."
+        ]
+      },
+      {
+        "heading": "4. Proveedores y encargados",
+        "paragraphs": [
+          "Supabase: autenticación y base de datos donde se almacenan tu cuenta y los datos financieros que registrás.",
+          "Google: si elegís \"Continuar con Google\", Google procesa la autenticación según sus propias políticas.",
+          "Vercel: alojamiento de la aplicación y, cuando está habilitado, Speed Insights u otras métricas de rendimiento del hosting.",
+          "Estos proveedores tratan datos en la medida necesaria para prestar sus servicios. Te recomendamos revisar también sus políticas de privacidad."
+        ]
+      },
+      {
+        "heading": "5. Cookies y tecnologías similares",
+        "paragraphs": [
+          "Usamos cookies y almacenamiento técnico necesarios para el funcionamiento del Servicio: sesión de autenticación, preferencia de idioma y mensajes temporales de la interfaz (por ejemplo, toasts).",
+          "En este momento no utilizamos cookies de publicidad ni herramientas de marketing de terceros. Si en el futuro incorporamos analítica no esencial, actualizaremos esta política y, cuando corresponda, pediremos tu consentimiento."
+        ]
+      },
+      {
+        "heading": "6. Conservación",
+        "paragraphs": [
+          "Conservamos tus datos mientras mantengas una cuenta activa en Margo y sea necesario para prestar el Servicio.",
+          "Si solicitás la eliminación de tu cuenta o de datos concretos, procesaremos el pedido en un plazo razonable, salvo que debamos retener cierta información por obligación legal o para resolver disputas."
+        ]
+      },
+      {
+        "heading": "7. Tus derechos",
+        "paragraphs": [
+          "Según la normativa aplicable (por ejemplo, RGPD si residís en el Espacio Económico Europeo), podés solicitar acceso, rectificación, supresión, limitación del tratamiento, oposición y, cuando corresponda, portabilidad de tus datos.",
+          "Para ejercer estos derechos, escribinos a aleguiter9@gmail.com indicando claramente tu solicitud y el correo asociado a tu cuenta. Podemos pedirte información adicional para verificar tu identidad."
+        ]
+      },
+      {
+        "heading": "8. Seguridad",
+        "paragraphs": [
+          "Aplicamos medidas técnicas y organizativas razonables para proteger tus datos (acceso autenticado, transmisión cifrada vía HTTPS y controles del proveedor de infraestructura).",
+          "Ningún sistema es 100% seguro. Si detectás un incidente que afecte tu cuenta, contactanos de inmediato en aleguiter9@gmail.com."
+        ]
+      },
+      {
+        "heading": "9. Menores",
+        "paragraphs": [
+          "Margo no está dirigido a menores de 16 años (o la edad mínima que exija tu jurisdicción). Si creés que un menor nos ha proporcionado datos personales, contactanos para que podamos eliminarlos."
+        ]
+      },
+      {
+        "heading": "10. Cambios a esta política",
+        "paragraphs": [
+          "Podemos actualizar esta Política de Privacidad para reflejar cambios en el Servicio o en la normativa. Publicaremos la versión actualizada en esta página con la fecha de última actualización.",
+          "Si los cambios son relevantes, intentaremos avisarte de forma razonable (por ejemplo, mediante un aviso en la aplicación o por correo)."
+        ]
+      },
+      {
+        "heading": "11. Aviso importante",
+        "paragraphs": [
+          "Margo es una herramienta de organización y seguimiento de finanzas personales. No es una entidad financiera, no ofrece asesoramiento financiero, fiscal ni de inversión, y no constituye un servicio bancario."
+        ]
+      }
+    ]
+  },
+  "terms": {
+    "title": "Condiciones de Servicio",
+    "lastUpdated": "Última actualización: 9 de octubre de 2026",
+    "backHome": "Volver a Margo",
+    "otherDocLabel": "Política de Privacidad",
+    "otherDocHref": "/privacy",
+    "sections": [
+      {
+        "heading": "1. Aceptación",
+        "paragraphs": [
+          "Al crear una cuenta o usar Margo (\"el Servicio\"), aceptás estas Condiciones de Servicio y nuestra Política de Privacidad. Si no estás de acuerdo, no uses el Servicio.",
+          "Margo es un proyecto personal en evolución. El Servicio puede cambiar, interrumpirse o dejar de ofrecerse sin previo aviso prolongado."
+        ]
+      },
+      {
+        "heading": "2. Descripción del Servicio",
+        "paragraphs": [
+          "Margo te permite registrar y visualizar información de finanzas personales que vos introducís: cuentas, movimientos, categorías, presupuestos y análisis básicos.",
+          "El Servicio no se conecta automáticamente a bancos ni ejecuta pagos, transferencias o inversiones en tu nombre."
+        ]
+      },
+      {
+        "heading": "3. Cuenta y elegibilidad",
+        "paragraphs": [
+          "Debés proporcionar información veraz y mantener la confidencialidad de tus credenciales. Sos responsable de la actividad que ocurra bajo tu cuenta.",
+          "Debés tener capacidad legal para aceptar estas condiciones y la edad mínima exigida en tu jurisdicción para usar servicios online de este tipo."
+        ]
+      },
+      {
+        "heading": "4. Uso aceptable",
+        "paragraphs": [
+          "Te comprometés a usar Margo de forma lícita y a no: intentar acceder sin autorización a sistemas o datos ajenos; interferir con el funcionamiento del Servicio; abusar de APIs o recursos; ni usar el Servicio para actividades ilegales o fraudulentas.",
+          "Podemos suspender o cancelar cuentas que vulneren estas reglas o pongan en riesgo la seguridad del Servicio u otros usuarios."
+        ]
+      },
+      {
+        "heading": "5. No es asesoramiento ni servicio financiero",
+        "paragraphs": [
+          "La información, gráficos y resúmenes que muestra Margo son herramientas de organización personal. No constituyen asesoramiento financiero, contable, fiscal ni de inversión.",
+          "Margo no es un banco, entidad de pago ni intermediario financiero. Las decisiones que tomés con base en la información registrada son de tu exclusiva responsabilidad."
+        ]
+      },
+      {
+        "heading": "6. Tu contenido",
+        "paragraphs": [
+          "Conservás la titularidad de los datos financieros y demás contenido que cargues. Nos otorgás una licencia limitada para alojar, procesar y mostrar ese contenido únicamente con el fin de prestar el Servicio.",
+          "Sos responsable de la exactitud de la información que registrás y de disponer de los derechos necesarios sobre ella."
+        ]
+      },
+      {
+        "heading": "7. Disponibilidad y \"tal cual\"",
+        "paragraphs": [
+          "El Servicio se ofrece \"tal cual\" y \"según disponibilidad\", sin garantías de disponibilidad ininterrumpida, ausencia de errores o idoneidad para un propósito particular.",
+          "Podemos realizar mantenimientos, correcciones o cambios de funcionalidades en cualquier momento."
+        ]
+      },
+      {
+        "heading": "8. Limitación de responsabilidad",
+        "paragraphs": [
+          "En la máxima medida permitida por la ley aplicable, no seremos responsables por daños indirectos, incidentales, lucro cesante, pérdida de datos o decisiones financieras tomadas a partir del uso de Margo.",
+          "Nuestra responsabilidad total acumulada derivada del uso del Servicio no excederá, en la medida permitida, el mayor entre (a) el importe que nos hayas abonado por el Servicio en los últimos 12 meses (si aplica) o (b) cero, si el Servicio es gratuito."
+        ]
+      },
+      {
+        "heading": "9. Terminación",
+        "paragraphs": [
+          "Podés dejar de usar el Servicio en cualquier momento. Podés solicitar la eliminación de tu cuenta contactando a aleguiter9@gmail.com.",
+          "Podemos suspender o terminar el acceso si incumplís estas condiciones, si es necesario por seguridad o si discontinuamos el Servicio."
+        ]
+      },
+      {
+        "heading": "10. Cambios a las condiciones",
+        "paragraphs": [
+          "Podemos modificar estas Condiciones publicando una versión actualizada en esta página. El uso continuado del Servicio tras la publicación implica la aceptación de los cambios, salvo que la ley exija otro mecanismo de consentimiento."
+        ]
+      },
+      {
+        "heading": "11. Ley aplicable y contacto",
+        "paragraphs": [
+          "Estas Condiciones se interpretarán de conformidad con la legislación aplicable en tu lugar de residencia o, cuando corresponda, la que resulte de las normas de protección al consumidor. Este apartado es un borrador y puede actualizarse cuando el proyecto tenga una entidad o jurisdicción definida.",
+          "Para consultas sobre estas Condiciones: aleguiter9@gmail.com."
+        ]
+      }
+    ]
+  }
+}

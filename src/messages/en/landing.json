@@ -76,7 +76,10 @@
   "footer": {
     "tagline": "Personal finance with more margin.",
     "product": "Product",
-    "account": "Account"
+    "account": "Account",
+    "legal": "Legal",
+    "privacy": "Privacy",
+    "terms": "Terms"
   },
   "mocks": {
     "balance": "Balance",
