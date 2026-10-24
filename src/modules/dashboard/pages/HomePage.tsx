@@ -4,7 +4,7 @@ import { BudgetWidget } from "@/modules/budgets/ui/BudgetWidget";
 import { LastMovements } from "@/modules/dashboard/ui/LastMovements/LastMovements";
 import { UpcomingPayments } from "@/modules/dashboard/ui/UpcomingPayments/UpcomingPayments";
 
-export async function HomePage() {
+export function HomePage() {
   const accountId = "all";
 
   return (

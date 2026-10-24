@@ -26,14 +26,14 @@ export function PasswordField({
         {...props}
         type={visible ? "text" : "password"}
         className={cn(
-          "bg-muted/60 h-11 rounded-xl border-0 pr-11 shadow-none focus-visible:bg-card",
+          "bg-muted/60 h-11 rounded-xl pr-11 focus-visible:bg-card",
           className,
         )}
       />
       <button
         type="button"
         aria-label={visible ? toggleHideLabel : toggleShowLabel}
-        className="text-muted-foreground hover:text-foreground absolute right-3 flex items-center justify-center rounded p-1 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+        className="text-muted-foreground cursor-pointer hover:text-foreground absolute right-3 flex items-center justify-center rounded p-1 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
         onClick={() => setVisible((v) => !v)}
       >
         {visible ? (

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Info } from "lucide-react";
+import { Info } from "lucide-react";
 import { useTransition } from "react";
 import { resetPasswordForm } from "@/modules/auth/actions/user-action";
 import { useTranslations } from "next-intl";
@@ -45,10 +45,7 @@ export function ResetPage() {
   return (
     <>
       <AuthCard>
-        <AuthPageHeader
-          title={t("resetTitle")}
-          subtitle={t("resetSubtitle")}
-        />
+        <AuthPageHeader title={t("resetTitle")} subtitle={t("resetSubtitle")} />
 
         <form
           className="flex flex-col gap-4"
@@ -60,14 +57,16 @@ export function ResetPage() {
               control={form.control}
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="email">{t("email")}</FieldLabel>
+                  <FieldLabel htmlFor="email" className="sr-only">
+                    {t("email")}
+                  </FieldLabel>
                   <AuthInput
                     {...field}
                     id="email"
                     aria-invalid={fieldState.invalid}
                     type="email"
                     autoComplete="email"
-                    placeholder="name@example.com"
+                    placeholder={t("email")}
                   />
                   {fieldState.invalid && (
                     <FieldError
@@ -80,26 +79,24 @@ export function ResetPage() {
           </FieldGroup>
 
           <Button
-            className="h-11 w-full rounded-xl text-[13px] font-semibold"
+            className="h-11 w-full rounded-xl"
             loading={pending}
             type="submit"
           >
             {t("sendRecoveryLink")}
-            <ArrowRight className="size-4" aria-hidden="true" />
           </Button>
         </form>
 
-        <div className="bg-muted text-muted-foreground mt-4 flex items-start gap-2.5 rounded-xl p-3.5 text-xs leading-normal">
+        <div className="bg-muted text-muted-foreground mt-4 flex  gap-2.5 rounded-xl p-3 text-xs">
           <Info className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
           <p>{t("resetSpamTip")}</p>
         </div>
 
-        <div className="mt-6 flex flex-col items-center pt-2 text-center">
+        <div className="mt-4 text-center">
           <Link
             href="/login"
-            className="text-primary inline-flex items-center gap-1.5 text-[13px] font-medium transition-colors hover:underline"
+            className="text-primary text-[13px] font-medium hover:underline"
           >
-            <ArrowLeft className="size-4" aria-hidden="true" />
             {t("backToSignIn")}
           </Link>
         </div>

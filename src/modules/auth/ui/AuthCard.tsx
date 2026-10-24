@@ -9,7 +9,7 @@ export function AuthCard({ children, className }: Props) {
   return (
     <div
       className={cn(
-        "border-border/60 bg-card flex w-full max-w-[440px] flex-col rounded-xl border p-6 shadow-sm sm:p-8 md:p-10",
+        "border-border/60 bg-card flex w-full max-w-110 flex-col rounded-xl border p-4 shadow-sm sm:p-8 md:p-10",
         className,
       )}
     >

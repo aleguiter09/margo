@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { signInWithGoogle } from "../actions/user-action";
+import { Button } from "@/ui/button";
 
 function GoogleIcon() {
   return (
@@ -31,13 +32,15 @@ export function GoogleAuthButton() {
 
   return (
     <form action={signInWithGoogle}>
-      <button
+      <Button
         type="submit"
-        className="bg-muted cursor-pointer text-foreground hover:bg-muted/80 focus-visible:ring-ring flex h-11 w-full items-center justify-center gap-3 rounded-xl px-4 text-[13px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 active:scale-[0.99]"
+        variant="outline"
+        size="lg"
+        className="w-full bg-muted"
       >
         <GoogleIcon />
         <span>{t("continueWithGoogle")}</span>
-      </button>
+      </Button>
     </form>
   );
 }

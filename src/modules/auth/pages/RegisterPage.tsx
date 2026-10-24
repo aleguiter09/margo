@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useTransition } from "react";
 import { createUserForm } from "@/modules/auth/actions/user-action";
@@ -65,27 +64,6 @@ export function RegisterPage() {
           subtitle={t("registerSubtitle")}
         />
 
-        <GoogleAuthButton />
-        <p className="text-muted-foreground mt-2 text-center text-[11px] leading-relaxed">
-          {t("googleLegalNotice")}{" "}
-          <Link
-            href="/terms"
-            className="text-foreground underline-offset-2 hover:underline"
-          >
-            {t("termsOfService")}
-          </Link>
-          {t("acceptTermsAnd")}
-          <Link
-            href="/privacy"
-            className="text-foreground underline-offset-2 hover:underline"
-          >
-            {t("privacyPolicy")}
-          </Link>
-          .
-        </p>
-
-        <AuthDivider label={t("orRegisterWithEmail")} />
-
         <form
           className="flex flex-col gap-4"
           onSubmit={form.handleSubmit(onSubmit)}
@@ -96,14 +74,16 @@ export function RegisterPage() {
               control={form.control}
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="email">{t("email")}</FieldLabel>
+                  <FieldLabel htmlFor="email" className="sr-only">
+                    {t("email")}
+                  </FieldLabel>
                   <AuthInput
                     {...field}
                     id="email"
                     aria-invalid={fieldState.invalid}
                     type="email"
                     autoComplete="email"
-                    placeholder="name@example.com"
+                    placeholder={t("email")}
                   />
                   {fieldState.invalid && (
                     <FieldError
@@ -119,13 +99,15 @@ export function RegisterPage() {
               control={form.control}
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="password">{t("password")}</FieldLabel>
+                  <FieldLabel htmlFor="password" className="sr-only">
+                    {t("password")}
+                  </FieldLabel>
                   <PasswordField
                     {...field}
                     id="password"
                     aria-invalid={fieldState.invalid}
                     autoComplete="new-password"
-                    placeholder="••••••••••••"
+                    placeholder={t("password")}
                     toggleShowLabel={t("showPassword")}
                     toggleHideLabel={t("hidePassword")}
                   />
@@ -143,7 +125,7 @@ export function RegisterPage() {
               control={form.control}
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="confirmPassword">
+                  <FieldLabel htmlFor="confirmPassword" className="sr-only">
                     {t("confirmPassword")}
                   </FieldLabel>
                   <PasswordField
@@ -151,7 +133,7 @@ export function RegisterPage() {
                     id="confirmPassword"
                     aria-invalid={fieldState.invalid}
                     autoComplete="new-password"
-                    placeholder="••••••••••••"
+                    placeholder={t("confirmPassword")}
                     toggleShowLabel={t("showPassword")}
                     toggleHideLabel={t("hidePassword")}
                   />
@@ -171,7 +153,7 @@ export function RegisterPage() {
                 <Field
                   orientation="horizontal"
                   data-invalid={fieldState.invalid}
-                  className="mt-1 items-start gap-3"
+                  className="items-start gap-2"
                 >
                   <Checkbox
                     id="acceptTerms"
@@ -180,12 +162,11 @@ export function RegisterPage() {
                       field.onChange(checked === true ? true : undefined)
                     }
                     aria-invalid={fieldState.invalid}
-                    className="mt-0.5"
                   />
-                  <div className="flex min-w-0 flex-1 flex-col gap-1.5">
+                  <div className="flex min-w-0 flex-1 flex-col gap-1 justify-center ">
                     <FieldLabel
                       htmlFor="acceptTerms"
-                      className="text-muted-foreground block w-full text-[12px] font-normal leading-5"
+                      className="text-muted-foreground block w-full text-xs font-normal cursor-pointer"
                     >
                       {t("acceptTermsPrefix")}
                       <Link
@@ -201,7 +182,6 @@ export function RegisterPage() {
                       >
                         {t("privacyPolicy")}
                       </Link>
-                      .
                     </FieldLabel>
                     {fieldState.invalid && (
                       <FieldError
@@ -215,14 +195,33 @@ export function RegisterPage() {
           </FieldGroup>
 
           <Button
-            className="mt-2 h-11 w-full rounded-xl text-[13px] font-semibold"
+            className="mt-2 h-11 w-full rounded-xl"
             loading={pending}
             type="submit"
           >
             {t("createAccount")}
-            <ArrowRight className="size-4" aria-hidden="true" />
           </Button>
         </form>
+
+        <AuthDivider label={t("orRegisterWithEmail")} />
+
+        <GoogleAuthButton />
+        <p className="text-muted-foreground mt-2 text-center text-xs leading-relaxed">
+          {t("googleLegalNotice")}{" "}
+          <Link
+            href="/terms"
+            className="text-foreground underline-offset-2 hover:underline"
+          >
+            {t("termsOfService")}
+          </Link>
+          {t("acceptTermsAnd")}
+          <Link
+            href="/privacy"
+            className="text-foreground underline-offset-2 hover:underline"
+          >
+            {t("privacyPolicy")}
+          </Link>
+        </p>
 
         <AuthSwitchLink
           message={t("signInMessage")}

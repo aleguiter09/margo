@@ -6,8 +6,11 @@ export default function AuthLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <div className="bg-surface flex min-h-screen flex-col">
-      <header className="flex w-full flex-col items-center justify-center px-4 pb-4 pt-8">
-        <Link href="/" className="focus-visible:ring-ring rounded-md focus-visible:outline-none focus-visible:ring-2">
+      <header className="mx-auto flex h-16 w-full max-w-6xl flex-col justify-center px-4 sm:px-6">
+        <Link
+          href="/"
+          className="focus-visible:ring-ring rounded-md focus-visible:outline-none focus-visible:ring-2"
+        >
           <Image
             src="/margo-logo.png"
             alt="Margo"
@@ -19,7 +22,7 @@ export default function AuthLayout({
         </Link>
       </header>
 
-      <main className="flex flex-1 flex-col items-center justify-center px-4 py-8">
+      <main className="flex flex-1 flex-col items-center pt-6 px-4">
         {children}
       </main>
     </div>

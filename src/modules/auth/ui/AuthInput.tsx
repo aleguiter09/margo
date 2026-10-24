@@ -9,7 +9,7 @@ export function AuthInput({ className, ...props }: Props) {
     <Input
       {...props}
       className={cn(
-        "bg-muted/60 h-11 rounded-xl border-0 shadow-none focus-visible:bg-card",
+        "bg-muted/60 h-11 rounded-xl focus-visible:bg-card",
         className,
       )}
     />
