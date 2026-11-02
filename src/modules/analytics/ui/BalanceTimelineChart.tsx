@@ -90,7 +90,7 @@ export function BalanceTimelineChart({
   }
 
   return (
-    <div className="h-72 w-full px-2 pb-1">
+    <div className="h-full min-h-48 w-full flex-1 px-2 pb-1">
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart
           data={data}

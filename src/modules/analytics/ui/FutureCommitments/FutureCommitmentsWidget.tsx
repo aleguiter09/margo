@@ -14,14 +14,13 @@ export async function FutureCommitmentsWidget({ accountId }: Props) {
   const t = await getTranslations("dashboard");
 
   return (
-    <Card className="flex flex-col gap-3 p-4">
-      <div>
-        <h3 className="text-sm font-semibold">{t("commitmentsTitle")}</h3>
-        <p className="text-xs text-muted-foreground">{t("commitmentsDescription")}</p>
+    <Card className="flex h-full flex-col gap-3 p-4">
+      <h3 className="text-sm font-semibold">{t("commitmentsTitle")}</h3>
+      <div className="min-h-0 max-h-68 flex-1 overflow-auto">
+        <Suspense key={accountId} fallback={<FutureCommitmentsSkeleton />}>
+          <FutureCommitmentsContent accountId={accountId} />
+        </Suspense>
       </div>
-      <Suspense key={accountId} fallback={<FutureCommitmentsSkeleton />}>
-        <FutureCommitmentsContent accountId={accountId} />
-      </Suspense>
     </Card>
   );
 }

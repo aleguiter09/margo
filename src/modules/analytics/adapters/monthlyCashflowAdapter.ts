@@ -42,7 +42,7 @@ function withDifference(income: number, expenses: number) {
 
 export function aggregateMonthlyCashflow(
   movements: MonthlyCashflowMovement[],
-  months = 12,
+  months = 6,
   now = new Date(),
 ): MonthlyCashflowRow[] {
   const rowsByMonth = new Map(
@@ -88,8 +88,7 @@ export function summarizeMonthlyCashflow(
     };
   }
 
-  const income =
-    rows.reduce((sum, row) => sum + row.income, 0) / rows.length;
+  const income = rows.reduce((sum, row) => sum + row.income, 0) / rows.length;
   const expenses =
     rows.reduce((sum, row) => sum + row.expenses, 0) / rows.length;
   const { difference, differencePercent } = withDifference(income, expenses);
@@ -107,15 +106,7 @@ export function getMonthlyCashflowRange(months = 12, now = new Date()) {
     Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - (months - 1), 1),
   );
   const end = new Date(
-    Date.UTC(
-      now.getUTCFullYear(),
-      now.getUTCMonth() + 1,
-      0,
-      23,
-      59,
-      59,
-      999,
-    ),
+    Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + 1, 0, 23, 59, 59, 999),
   );
 
   return {

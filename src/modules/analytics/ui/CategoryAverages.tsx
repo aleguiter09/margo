@@ -60,11 +60,13 @@ export async function CategoryComparisonTable({
   );
 
   return (
-    <Card className="p-4">
-      <h3 className="text-sm font-semibold mb-4">{t("analytics.title")}</h3>
+    <Card className="flex h-full flex-col p-4">
+      <h3 className="mb-4 shrink-0 text-sm font-semibold">
+        {t("analytics.title")}
+      </h3>
 
-      <Table>
-        <TableHeader>
+      <Table containerClassName="min-h-0 max-h-68 flex-1 overflow-auto">
+        <TableHeader className="sticky top-0 z-10 bg-card">
           <TableRow>
             <TableHead className="text-xs">{t("analytics.category")}</TableHead>
             <TableHead className="text-right text-xs">

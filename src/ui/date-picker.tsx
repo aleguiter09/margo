@@ -126,27 +126,31 @@ export function DateRangePicker({
   };
 
   return (
-    <div className={cn("flex flex-col gap-3 w-full", className)}>
-      <div className="flex gap-2">
-        <Popover modal open={open} onOpenChange={setOpen}>
+    <div className={cn("flex w-full min-w-0 flex-col gap-3", className)}>
+      <div className="flex min-w-0 w-full flex-col gap-2">
+        <Popover open={open} onOpenChange={setOpen}>
           <PopoverTrigger asChild>
             <Button
               type="button"
               variant="outline"
               id="date"
-              className={cn(
-                "justify-start font-normal flex gap-3 px-2 bg-background hover:bg-accent flex-1",
-              )}
+              className="flex w-full min-w-0 justify-start gap-3 px-2 font-normal bg-background hover:bg-accent"
             >
-              <Calendar1 className="text-muted-foreground" />
-              {value?.from && value?.to
-                ? value.from.toLocaleDateString() +
-                  " - " +
-                  value.to.toLocaleDateString()
-                : t("chooseDate")}
+              <Calendar1 className="shrink-0 text-muted-foreground" />
+              <span className="truncate">
+                {value?.from && value?.to
+                  ? value.from.toLocaleDateString() +
+                    " - " +
+                    value.to.toLocaleDateString()
+                  : t("chooseDate")}
+              </span>
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="w-auto overflow-hidden p-0" align="start">
+          <PopoverContent
+            className="w-auto overflow-hidden p-0"
+            align="start"
+            collisionPadding={16}
+          >
             <Calendar
               mode="range"
               locale={locale}
@@ -168,7 +172,7 @@ export function DateRangePicker({
             }
           }}
         >
-          <SelectTrigger className="w-45 bg-background hover:bg-accent">
+          <SelectTrigger className="w-full min-w-0 bg-background hover:bg-accent">
             <SelectValue placeholder={t("quickSelect")} />
           </SelectTrigger>
           <SelectContent>

@@ -51,25 +51,21 @@ export async function MonthlyCashflowTable({ accountId, months }: Props) {
   if (!hasData) return null;
 
   return (
-    <Card className="p-4">
-      <div className="mb-4 flex items-center justify-between gap-3">
+    <Card className="flex h-full flex-col p-4 border-b-4 border-b-primary">
+      <div className="flex shrink-0 justify-between ">
         <h3 className="text-sm font-semibold">{t("monthlyCashflowTitle")}</h3>
         <MonthlyCashflowMonthsSelect months={months} />
       </div>
 
-      <Table>
-        <TableHeader>
+      <Table containerClassName="min-h-0 max-h-68 flex-1 overflow-auto">
+        <TableHeader className="sticky top-0 z-10 bg-card">
           <TableRow>
             <TableHead className="text-xs">{t("month")}</TableHead>
-            <TableHead className="text-right text-xs">
-              {t("incomes")}
-            </TableHead>
+            <TableHead className="text-right text-xs">{t("incomes")}</TableHead>
             <TableHead className="text-right text-xs">
               {t("expenses")}
             </TableHead>
-            <TableHead className="text-right text-xs">
-              {t("savings")}
-            </TableHead>
+            <TableHead className="text-right text-xs">{t("savings")}</TableHead>
             <TableHead className="text-right text-xs">
               {t("savingsRate")}
             </TableHead>
@@ -100,8 +96,8 @@ export async function MonthlyCashflowTable({ accountId, months }: Props) {
             </TableRow>
           ))}
         </TableBody>
-        <TableFooter>
-          <TableRow className="bg-muted/50 hover:bg-muted/50">
+        <TableFooter className="sticky bottom-0 z-10">
+          <TableRow className="bg-white">
             <TableCell className="text-xs font-semibold">
               {t("average")}
             </TableCell>

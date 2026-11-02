@@ -2,15 +2,22 @@
 
 import { format } from "date-fns";
 import Link from "next/link";
-import { getDateFnsLocale } from "@/modules/shared/utils/dateFnsLocale";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
-import { Button } from "@/ui/button";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { DateRangePicker } from "@/ui/date-picker";
+import { getCategoryLabel } from "@/modules/categories/utils/getCategoryLabel";
 import { AccountFilterSelect } from "@/modules/shared/ui/common/AccountFilterSelect";
 import { CategoryFilterSelect } from "@/modules/shared/ui/common/CategoryFilterSelect";
+import { FiltersPopover } from "@/modules/shared/ui/filters/FiltersPopover";
+import {
+  FiltersChips,
+  FiltersTrigger,
+  type FilterChip,
+} from "@/modules/shared/ui/filters/FiltersTrigger";
+import { useData } from "@/modules/shared/stores/DataProvider";
 import { cn } from "@/modules/shared/utils/cn";
+import { getDateFnsLocale } from "@/modules/shared/utils/dateFnsLocale";
 import type { MovementsScope } from "../../types/types";
 
 type Props = Readonly<{
@@ -27,6 +34,10 @@ function getDefaultFrom() {
 
 function getDefaultTo() {
   return new Date();
+}
+
+function isSameDay(a: Date, b: Date) {
+  return format(a, "yyyy-MM-dd") === format(b, "yyyy-MM-dd");
 }
 
 function buildScopeHref(
@@ -59,10 +70,14 @@ export function MovementsFilters({
 }: Props) {
   const locale = useLocale();
   const t = useTranslations("movements");
+  const tCategories = useTranslations("categories");
   const pathname = usePathname();
   const { replace } = useRouter();
+  const { accounts, incomeCategories, expenseCategories } = useData();
+  const dateLocale = getDateFnsLocale(locale);
   const isUpcoming = scope === "upcoming";
 
+  const [open, setOpen] = useState(false);
   const [draftFrom, setDraftFrom] = useState(from);
   const [draftTo, setDraftTo] = useState(to);
   const [draftAccountId, setDraftAccountId] = useState(accountId);
@@ -83,14 +98,9 @@ export function MovementsFilters({
       return accountChanged || categoryChanged;
     }
 
-    const appliedFrom = format(from, "yyyy-MM-dd");
-    const appliedTo = format(to, "yyyy-MM-dd");
-    const draftFromStr = format(draftFrom, "yyyy-MM-dd");
-    const draftToStr = format(draftTo, "yyyy-MM-dd");
-
     return (
-      appliedFrom !== draftFromStr ||
-      appliedTo !== draftToStr ||
+      !isSameDay(from, draftFrom) ||
+      !isSameDay(to, draftTo) ||
       accountChanged ||
       categoryChanged
     );
@@ -106,30 +116,169 @@ export function MovementsFilters({
     isUpcoming,
   ]);
 
-  const handleApply = () => {
-    const params = new URLSearchParams();
-    params.set("account", draftAccountId);
-    params.set("category", draftCategoryId);
+  const replaceFilters = useCallback(
+    (
+      nextFrom: Date,
+      nextTo: Date,
+      nextAccountId: string,
+      nextCategoryId: string,
+    ) => {
+      const params = new URLSearchParams();
+      params.set("account", nextAccountId);
+      params.set("category", nextCategoryId);
 
-    if (isUpcoming) {
-      params.set("scope", "upcoming");
-    } else {
-      params.set("from", format(draftFrom, "yyyy-MM-dd"));
-      params.set("to", format(draftTo, "yyyy-MM-dd"));
+      if (isUpcoming) {
+        params.set("scope", "upcoming");
+      } else {
+        params.set("from", format(nextFrom, "yyyy-MM-dd"));
+        params.set("to", format(nextTo, "yyyy-MM-dd"));
+      }
+
+      replace(`${pathname}?${params.toString()}`, { scroll: false });
+    },
+    [isUpcoming, pathname, replace],
+  );
+
+  const handleOpenChange = (nextOpen: boolean) => {
+    setOpen(nextOpen);
+    if (!nextOpen) {
+      setDraftFrom(from);
+      setDraftTo(to);
+      setDraftAccountId(accountId);
+      setDraftCategoryId(categoryId);
     }
+  };
 
-    replace(`${pathname}?${params.toString()}`, { scroll: false });
+  const handleApply = () => {
+    replaceFilters(draftFrom, draftTo, draftAccountId, draftCategoryId);
+    setOpen(false);
   };
 
   const handleClear = () => {
-    setDraftFrom(getDefaultFrom());
-    setDraftTo(getDefaultTo());
+    const defaultFrom = getDefaultFrom();
+    const defaultTo = getDefaultTo();
+    setDraftFrom(defaultFrom);
+    setDraftTo(defaultTo);
     setDraftAccountId("all");
     setDraftCategoryId("all");
+    replaceFilters(defaultFrom, defaultTo, "all", "all");
+    setOpen(false);
   };
+
+  const resolveCategoryLabel = useCallback(
+    (id: string) => {
+      if (id === "incomes") return tCategories("allIncomes");
+      if (id === "expenses") return tCategories("allExpenses");
+
+      const category = [...incomeCategories, ...expenseCategories].find(
+        (item) => String(item.id) === id,
+      );
+      if (!category) return id;
+
+      return getCategoryLabel(
+        category.title,
+        category.isGlobal,
+        category.isCustomName,
+        tCategories,
+      );
+    },
+    [expenseCategories, incomeCategories, tCategories],
+  );
+
+  const chips = useMemo((): FilterChip[] => {
+    const next: FilterChip[] = [];
+
+    if (!isUpcoming) {
+      const datesAreDefault =
+        isSameDay(from, getDefaultFrom()) && isSameDay(to, getDefaultTo());
+
+      if (!datesAreDefault) {
+        next.push({
+          id: "dates",
+          label: `${format(from, "dd MMM", { locale: dateLocale })} – ${format(to, "dd MMM", { locale: dateLocale })}`,
+          onRemove: () => {
+            replaceFilters(
+              getDefaultFrom(),
+              getDefaultTo(),
+              accountId,
+              categoryId,
+            );
+          },
+        });
+      }
+    }
+
+    if (accountId !== "all") {
+      const accountName =
+        accounts.find((account) => String(account.id) === accountId)?.name ??
+        accountId;
+      next.push({
+        id: "account",
+        label: accountName,
+        onRemove: () => {
+          replaceFilters(from, to, "all", categoryId);
+        },
+      });
+    }
+
+    if (categoryId !== "all") {
+      next.push({
+        id: "category",
+        label: resolveCategoryLabel(categoryId),
+        onRemove: () => {
+          replaceFilters(from, to, accountId, "all");
+        },
+      });
+    }
+
+    return next;
+  }, [
+    isUpcoming,
+    from,
+    to,
+    accountId,
+    categoryId,
+    accounts,
+    dateLocale,
+    replaceFilters,
+    resolveCategoryLabel,
+  ]);
 
   return (
     <div className="mb-4 flex flex-col gap-2">
+      <div className="flex items-center justify-between gap-3">
+        <h1 className="text-lg font-semibold">{t("listTitle")}</h1>
+        <FiltersPopover
+          open={open}
+          onOpenChange={handleOpenChange}
+          trigger={<FiltersTrigger activeCount={chips.length} />}
+          onApply={handleApply}
+          onClear={handleClear}
+          applyDisabled={!isDirty}
+        >
+          <div className="flex flex-col gap-3">
+            {!isUpcoming ? (
+              <DateRangePicker
+                value={{ from: draftFrom, to: draftTo }}
+                onChange={(val) => {
+                  if (val?.from) setDraftFrom(val.from);
+                  if (val?.to) setDraftTo(val.to);
+                }}
+                locale={dateLocale}
+              />
+            ) : null}
+            <AccountFilterSelect
+              value={draftAccountId}
+              onValueChange={setDraftAccountId}
+            />
+            <CategoryFilterSelect
+              value={draftCategoryId}
+              onValueChange={setDraftCategoryId}
+            />
+          </div>
+        </FiltersPopover>
+      </div>
+
       <div className="inline-flex h-9 w-full items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground">
         <Link
           href={buildScopeHref("applied", accountId, categoryId, from, to)}
@@ -151,39 +300,7 @@ export function MovementsFilters({
         </Link>
       </div>
 
-      {!isUpcoming && (
-        <DateRangePicker
-          value={{ from: draftFrom, to: draftTo }}
-          onChange={(val) => {
-            if (val?.from) setDraftFrom(val.from);
-            if (val?.to) setDraftTo(val.to);
-          }}
-          locale={getDateFnsLocale(locale)}
-        />
-      )}
-      <div className="flex items-center gap-2">
-        <AccountFilterSelect
-          value={draftAccountId}
-          onValueChange={setDraftAccountId}
-        />
-        <CategoryFilterSelect
-          value={draftCategoryId}
-          onValueChange={setDraftCategoryId}
-        />
-      </div>
-      <div className="flex items-center gap-2">
-        <Button
-          type="button"
-          variant="default"
-          disabled={!isDirty}
-          onClick={handleApply}
-        >
-          {t("applyFilters")}
-        </Button>
-        <Button type="button" variant="outline" onClick={handleClear}>
-          {t("clearFilters")}
-        </Button>
-      </div>
+      <FiltersChips chips={chips} />
     </div>
   );
 }
