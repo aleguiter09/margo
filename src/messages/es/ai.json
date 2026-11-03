@@ -1,0 +1,25 @@
+{
+  "title": "Asistente IA",
+  "subtitle": "Consulta tus finanzas o crea movimientos con confirmación.",
+  "placeholder": "Pregunta lo que quieras sobre tu dinero…",
+  "send": "Enviar",
+  "emptyTitle": "¿En qué te ayudo?",
+  "emptyDescription": "Prueba una sugerencia o escribe tu petición.",
+  "suggestions": {
+    "monthSummary": "¿Cuánto he gastado este mes?",
+    "cashflow": "Muéstrame el cashflow de los últimos 6 meses",
+    "budgets": "¿Cómo van mis presupuestos?",
+    "addExpense": "Añade un gasto de café de 3,50 hoy"
+  },
+  "approve": "Confirmar",
+  "deny": "Cancelar",
+  "approvalPending": "¿Confirmas esta acción?",
+  "approvalDenied": "Acción cancelada.",
+  "approvalRunning": "Creando movimiento…",
+  "approvalSuccess": "Movimiento creado.",
+  "approvalError": "No se pudo crear el movimiento.",
+  "thinking": "Pensando…",
+  "error": "Algo salió mal. Inténtalo de nuevo.",
+  "you": "Tú",
+  "assistant": "Asistente"
+}

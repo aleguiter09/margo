@@ -16,6 +16,7 @@ export default getRequestConfig(async () => {
         accounts: (
           await import(`../../messages/${data.language}/accounts.json`)
         ).default,
+        ai: (await import(`../../messages/${data.language}/ai.json`)).default,
         auth: (await import(`../../messages/${data.language}/auth.json`))
           .default,
         budgets: (
@@ -57,6 +58,7 @@ export default getRequestConfig(async () => {
     messages: {
       accounts: (await import(`../../messages/${locale}/accounts.json`))
         .default,
+      ai: (await import(`../../messages/${locale}/ai.json`)).default,
       auth: (await import(`../../messages/${locale}/auth.json`)).default,
       budgets: (await import(`../../messages/${locale}/budgets.json`))
         .default,

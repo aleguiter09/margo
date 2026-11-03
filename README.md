@@ -39,6 +39,7 @@ Fill in values from **Supabase → Project Settings → API**:
 | `SUPABASE_SERVICE_ROLE_KEY` | Cron / admin client only | **Secret** — never commit or expose client-side |
 | `SITE_URL` | OAuth + auth email redirects | `http://localhost:3000` locally |
 | `CRON_SECRET` | `/api/cron/apply-movements` auth | Required in production for Vercel Cron |
+| `AI_GATEWAY_API_KEY` | `/api/ai/chat` (AI assistant) | Local AI Gateway key; on Vercel, OIDC may replace it |
 
 ### 3. Database
 

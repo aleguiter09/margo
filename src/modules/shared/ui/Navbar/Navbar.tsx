@@ -4,7 +4,7 @@ import Link from "next/link";
 import { logout } from "@/modules/auth/actions/user-action";
 import { FloatingAddButton } from "@/modules/dashboard/ui/ActionBar/FloatingAddButton";
 import { MovementDialog } from "@/modules/movements/ui/MovementDialog";
-import { ChartArea, Home, LogOutIcon, Settings } from "lucide-react";
+import { ChartArea, Home, LogOutIcon, Settings, Sparkles } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import { cn } from "../../utils/cn";
@@ -14,7 +14,10 @@ const leftLinks = [
   { key: "analytics", href: "/analytics", icon: <ChartArea /> },
 ];
 
-const rightLinks = [{ key: "settings", href: "/settings", icon: <Settings /> }];
+const rightLinks = [
+  { key: "ai", href: "/ai", icon: <Sparkles /> },
+  { key: "settings", href: "/settings", icon: <Settings /> },
+];
 
 export function Navbar() {
   const t = useTranslations("common.nav");
