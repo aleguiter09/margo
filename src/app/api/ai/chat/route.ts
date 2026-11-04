@@ -27,7 +27,7 @@ export async function POST(req: Request) {
   const tools = createAiTools();
 
   const result = streamText({
-    model: "openai/gpt-4.1-mini",
+    model: "nvidia/nemotron-3.5-lightning-free",
     system: systemPrompt,
     messages: await convertToModelMessages(messages),
     tools,
