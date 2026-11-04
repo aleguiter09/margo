@@ -15,6 +15,7 @@
   "nav": {
     "home": "Home",
     "analytics": "Analytics",
+    "ai": "AI",
     "settings": "Settings",
     "logout": "Logout"
   },

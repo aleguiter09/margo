@@ -1,0 +1,25 @@
+{
+  "title": "AI assistant",
+  "subtitle": "Ask about your finances or create movements with confirmation.",
+  "placeholder": "Ask anything about your money…",
+  "send": "Send",
+  "emptyTitle": "How can I help?",
+  "emptyDescription": "Try a suggestion or type your own request.",
+  "suggestions": {
+    "monthSummary": "How much did I spend this month?",
+    "cashflow": "Show my cashflow for the last 6 months",
+    "budgets": "How are my budgets doing?",
+    "addExpense": "Add a coffee expense of 3.50 today"
+  },
+  "approve": "Confirm",
+  "deny": "Cancel",
+  "approvalPending": "Confirm this action?",
+  "approvalDenied": "Action cancelled.",
+  "approvalRunning": "Creating movement…",
+  "approvalSuccess": "Movement created.",
+  "approvalError": "Could not create the movement.",
+  "thinking": "Thinking…",
+  "error": "Something went wrong. Please try again.",
+  "you": "You",
+  "assistant": "Assistant"
+}
